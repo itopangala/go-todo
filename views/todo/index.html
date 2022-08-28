@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <title>GO TODO</title>
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h5>Todo List</h5>
+    <a href="/todo/add" class="btn btn-sm btn-primary">Tambah Kegiatan</a>
+    <hr />
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Kegiatan</th>
+          <th>Catatan</th>
+          <th>Prioritas</th>
+          <th>Tenggat Waktu</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range .todo }}
+        <tr>
+          <td>{{ .Kegiatan }}</td>
+          <td>{{ .Catatan }}</td>
+          <td>{{ .Prioritas }}</td>
+          <td>{{ .TenggatWaktu }}</td>
+          <td>
+            <a href="/todo/edit?id={{.Id}}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="/todo/delete?id={{.Id}}" class="btn btn-sm btn-danger"
+              onclick="return confirm('Apakah anda yakin?')">Hapus</a>
+          </td>
+        </tr>
+        {{ end}}
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
